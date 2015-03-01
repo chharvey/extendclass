@@ -92,12 +92,12 @@ This does two (2) things:
 
 1.  `Dog.prototype = Object.create(Animal.prototype);`
 
-    We need to let Dog.prototype have an `eat` function, and all other functions on
+    We need to let `Dog.prototype` have an `eat` function, and all other functions on
     `Animal.prototype`. But we cannot set `Dog.prototype = Animal.prototype` because
     then we'd lose the `pant` function. Thus we need `Dog.prototype` to *inherit* from
     `Animal.prototype`. One way to do this would be
 
-    Dog.prototype.__proto__ = Animal.prototype
+    `Dog.prototype.__proto__ = Animal.prototype`
 
     but setting `.__proto__` for anything is a bad idea, so we use `Object.create()`
     as a safe shortcut instead. This creates a new object whose `.__proto__` is
@@ -118,7 +118,7 @@ rex.eat();             // 'nom nom nom'
 ```
 
 Now `rex.eat()` logs `'nom nom nom'` because that function is inherited from
-`rex.__proto__.__proto__`, which === `Animal.prototype`.
+`rex.__proto__.__proto__`, which `=== Animal.prototype`.
 
 See the MDN tutorial for more info.
 <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain>
