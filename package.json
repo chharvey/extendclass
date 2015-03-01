@@ -2,10 +2,6 @@
   "name": "extendclass",
   "version": "1.0.0",
   "description": "A simple prototype-based subclassing function.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "prototype",
     "inheritance",
@@ -13,6 +9,17 @@
     "class",
     "subclass"
   ],
+  "bugs": {
+    "url": "https://github.com/chharvey/extendclass/issues"
+  },
+  "license": "MIT",
   "author": "Chris Harvey <chrisharvey2pi@gmail.com> (https://chharvey.github.io/)",
-  "license": "ISC"
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chharvey/extendclass.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
