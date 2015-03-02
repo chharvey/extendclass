@@ -37,8 +37,8 @@ function Dog() {
 // THIS IS IMPORTANT. DO THIS.
 extend(Dog, Animal);
 
-Dog.prototype.pant = function () {
-  console.log('hhh hhh hhh');
+Dog.prototype.bark = function () {
+  console.log('woof woof');
 }
 ```
 
@@ -68,18 +68,18 @@ buzz.eat();               // 'nom nom nom'
 function Dog() {
   Animal.call(this, 4); // calls the super constructor specifying 4 legs
 }
-Dog.prototype.pant = function () {
-  console.log('hhh hhh hhh');
+Dog.prototype.bark = function () {
+  console.log('woof woof');
 }
 
 var rex = new Dog();
 console.log(rex.legs); // 4,
-rex.pant();            // 'hhh hhh hhh'
+rex.bark();            // 'woof woof'
 rex.eat();             // undefined!!!
 ```
 
 `rex.legs` logs 4 because that's given by `Dog` constructor calling the `Animal`
-constructor. `rex.pant()` logs `'hhh hhh hhh'` because that's inherited from
+constructor. `rex.bark()` logs `'woof woof'` because that's inherited from
 `rex.__proto__`. But `rex.eat()` is undefined.
 
 Why? Because `rex.__proto__ === Dog.prototype`, which does not have an `eat` function.
@@ -94,7 +94,7 @@ This does two (2) things:
 
     We need to let `Dog.prototype` have an `eat` function, and all other functions on
     `Animal.prototype`. But we cannot set `Dog.prototype = Animal.prototype` because
-    then we'd lose the `pant` function. Thus we need `Dog.prototype` to *inherit* from
+    then we'd lose the `bark` function. Thus we need `Dog.prototype` to *inherit* from
     `Animal.prototype`. One way to do this would be
 
     `Dog.prototype.__proto__ = Animal.prototype`
@@ -113,7 +113,7 @@ Now the right way:
 ```js
 rex = new Dog();       // reassigning `rex`
 console.log(rex.legs); // 4
-rex.pant();            // 'hhh hhh hhh'
+rex.bark();            // 'woof woof'
 rex.eat();             // 'nom nom nom'
 ```
 
