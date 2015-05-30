@@ -9,7 +9,7 @@ A simple prototype-based subclassing function.
 ## Usage
 
 ```js
-extend(Dog, Animal);
+extend(Dog, Animal)
 ```
 
 This function extends a class using the prototype inheritance chain, under the
@@ -20,43 +20,43 @@ calls. Call this function immediately after the child class's constructor.
 ### Short Example
 
 ```js
-var extend = require('extendclass');
+var extend = require('extendclass')
 
 function Animal(n) {
-  this.legs = n;
+  this.legs = n
 }
 
 Animal.prototype.eat = function () {
-  console.log('nom nom nom');
+  console.log('nom nom nom')
 }
 
 function Dog() {
-  Animal.call(this, 4);
+  Animal.call(this, 4)
 }
 
 // THIS IS IMPORTANT. DO THIS.
-extend(Dog, Animal);
+extend(Dog, Animal)
 
 Dog.prototype.bark = function () {
-  console.log('woof woof');
+  console.log('woof woof')
 }
 ```
 
 ### Long Example with Comments
 
 ```js
-var extend = require('extendclass');
+var extend = require('extendclass')
 
 function Animal(n) {
-  this.legs = n;
+  this.legs = n
 }
 Animal.prototype.eat = function () {
-  console.log('nom nom nom');
+  console.log('nom nom nom')
 }
 
-var buzz = new Animal(6);
-console.log(buzz.legs);   // 6
-buzz.eat();               // 'nom nom nom'
+var buzz = new Animal(6)
+console.log(buzz.legs)   // 6
+buzz.eat()               // 'nom nom nom'
 ```
 
 
@@ -66,16 +66,16 @@ buzz.eat();               // 'nom nom nom'
 
 ```js
 function Dog() {
-  Animal.call(this, 4); // calls the super constructor specifying 4 legs
+  Animal.call(this, 4) // calls the super constructor specifying 4 legs
 }
 Dog.prototype.bark = function () {
-  console.log('woof woof');
+  console.log('woof woof')
 }
 
-var rex = new Dog();
-console.log(rex.legs); // 4,
-rex.bark();            // 'woof woof'
-rex.eat();             // undefined!!!
+var rex = new Dog()
+console.log(rex.legs) // 4,
+rex.bark()            // 'woof woof'
+rex.eat()             // undefined!!!
 ```
 
 `rex.legs` logs 4 because that's given by `Dog` constructor calling the `Animal`
@@ -88,12 +88,12 @@ We need to insert the following line *after* the `Dog` constructor, but *before*
 modifications to `Dog.prototype` (such as adding a `bark` function).
 
 ```js
-extend(Dog, Animal);
+extend(Dog, Animal)
 ```
 
 This does two (2) things:
 
-1.  `Dog.prototype = Object.create(Animal.prototype);`
+1.  `Dog.prototype = Object.create(Animal.prototype)`
 
     We need to let `Dog.prototype` have an `eat` function, and all other functions on
     `Animal.prototype`. But we cannot set `Dog.prototype = Animal.prototype` because
@@ -108,7 +108,7 @@ This does two (2) things:
     as a safe shortcut instead. This creates a new object whose `.__proto__` is
     `Animal.prototype` and assigns that object to `Dog.prototype`.
 
-2.  `Dog.prototype.constructor = Dog;`
+2.  `Dog.prototype.constructor = Dog`
 
     Since `Dog.prototype` inherits from `Animal.prototype`, its constructor will be that
     of `Animal`. That is, when you invoke `new Dog()`, it will use the `Animal` function.
@@ -117,10 +117,10 @@ This does two (2) things:
 Now the right way:
 
 ```js
-var axel = new Dog();
-console.log(axel.legs); // 4
-axel.bark();            // 'woof woof'
-axel.eat();             // 'nom nom nom'
+var axel = new Dog()
+console.log(axel.legs) // 4
+axel.bark()            // 'woof woof'
+axel.eat()             // 'nom nom nom'
 ```
 
 Now `axel.eat()` logs `'nom nom nom'` because that function is inherited from
