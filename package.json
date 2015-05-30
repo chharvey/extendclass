@@ -1,6 +1,6 @@
 {
   "name": "extendclass",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple prototype-based subclassing function.",
   "keywords": [
     "prototype",
