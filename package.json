@@ -1,6 +1,6 @@
 {
   "name": "extendclass",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple prototype-based subclassing function.",
   "keywords": [
     "prototype",
@@ -22,5 +22,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://www.npmjs.com/package/extendclass"
+  "homepage": "https://github.com/chharvey/extendclass/blob/gh-pages/README.md"
 }
