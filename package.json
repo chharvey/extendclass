@@ -22,5 +22,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/chharvey/extendclass/blob/gh-pages/README.md"
+  "homepage": "https://github.com/chharvey/extendclass#readme"
 }
